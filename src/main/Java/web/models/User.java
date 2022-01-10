@@ -1,13 +1,13 @@
 package web.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Table(name = "User", schema = "data-base")
+@Table
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     String name;
@@ -54,5 +54,16 @@ public class User {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return flat == user.flat && Objects.equals(id, user.id) && Objects.equals(name, user.name);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, flat);
+    }
 }

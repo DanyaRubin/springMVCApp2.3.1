@@ -1,0 +1,6 @@
+package web.service;
+
+public interface UserService {
+
+     void createUser (String name, int flat);
+}
