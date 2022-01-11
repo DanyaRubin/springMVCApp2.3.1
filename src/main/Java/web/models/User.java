@@ -4,13 +4,17 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table
+@Table (name = "Users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id")
     private Long id;
 
+    @Column (name = "name")
     String name;
+
+    @Column (name = "flat")
     int flat;
 
     public Long getId() {

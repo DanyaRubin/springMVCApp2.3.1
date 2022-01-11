@@ -45,7 +45,8 @@ public class AppConfig {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/data-base");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/data-base?verifyServerCertificate=false&useSSL=false&requireSSL=" +
+                "false&useLegacyDatetimeCode=false&amp&serverTimezone=UTC");
         dataSource.setUsername( "root" );
         dataSource.setPassword( "3344122" );
         return dataSource;
@@ -64,8 +65,8 @@ public class AppConfig {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         return properties;
     }
 
