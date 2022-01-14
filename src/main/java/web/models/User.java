@@ -1,21 +1,22 @@
 package web.models;
 
+import org.springframework.context.annotation.Bean;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table (name = "Users")
+@Table
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "Id")
     private Long id;
 
-    @Column (name = "name")
-    String name;
 
-    @Column (name = "flat")
-    int flat;
+    private String name;
+
+
+    private int flat;
 
     public Long getId() {
         return id;
