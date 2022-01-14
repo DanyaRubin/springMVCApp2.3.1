@@ -24,7 +24,7 @@ import java.util.Properties;
 @Configuration
 //@PropertySource("classpath:/db.properties")
 @EnableTransactionManagement()
-@ComponentScan()
+@ComponentScan(value = "java")
 @EnableWebMvc
 public class AppConfig {
 
@@ -33,7 +33,7 @@ public class AppConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("web.models");
+        em.setPackagesToScan(new String[]{"java/web/models"});
         em.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -47,8 +47,7 @@ public class AppConfig {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/data_base?verifyServerCertificate=false&useSSL=false&requireSSL=" +
-                "false&useLegacyDatetimeCode=false&amp&serverTimezone=UTC");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/data_base");
         dataSource.setUsername("root");
         dataSource.setPassword("3344122");
         return dataSource;
